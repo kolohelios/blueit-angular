@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('blueit')
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 
