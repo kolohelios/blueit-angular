@@ -15,3 +15,6 @@ h3 BLUEIT
         img.rowimg(ng-src='{{post.url}}' ng-show='post.isImage')
       div.rowdivs
         a.listtitle(ui-sref='posts.show({postId: post._id})') {{post.title}}
+        br
+        br(ng-show='post.isImage')
+        p.comments Comments: {{post.comments.length}}

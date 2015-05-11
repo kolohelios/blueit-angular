@@ -9,8 +9,14 @@ angular.module('blueit')
     return $http.post(nodeUrl + '/posts', post);
   };
 
-  Post.retrieve = function(){
-    return $http.get(nodeUrl + '/posts');
+  Post.retrieve = function(postId){
+    var postString;
+    if(postId !== undefined){
+      postString = nodeUrl + '/posts/' + postId;
+    }else{
+      postString = nodeUrl + '/posts';
+    }
+    return $http.get(postString);
   };
 
   Post.vote = function(postId, direction){
