@@ -23,5 +23,13 @@ angular.module('blueit')
     return $http.put(nodeUrl + '/posts/' + postId + '/' + direction);
   };
 
+  Post.addComment = function(postId, comment){
+    return $http.put(nodeUrl + '/posts/' + postId + '/comment', comment);
+  };
+
+  Post.commentVote = function(postId, commentId, direction){
+    return $http.put(nodeUrl + '/posts/' + postId + '/comment/' + commentId + '/' + direction);
+  };
+
   return Post;
 });
