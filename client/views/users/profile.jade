@@ -1,0 +1,30 @@
+h3 PROFILE
+
+form(name='profileForm')
+.row
+  .col-xs-6
+    .form-group
+      label(for='handle') Handle
+      input.form-control(type='text' name='handle' ng-model='profile.handle')
+    .form-group
+      label(for='avatarurl') Avatar Url
+      input.form-control(type='url' name='avatarurl' ng-model='avatarUrl')
+    button.btn.btn-success.btn-lg(ng-click='saveProfile(profile)') Save Profile
+    
+  .col-xs-6
+    p Handle: {{profile.handle}}
+    p Avatar:
+      img(ng-src='{{profile.avatar}}')
+  .col-xs-12
+    h4 Webcam Center
+    .row
+      .col-xs-4
+        .form-group
+          label(for='avatarurl') Avatar
+        .col-xs-12
+          button.btn.btn-success(ng-click='cameraOn()') Start
+          button.btn.btn-danger(ng-click='cameraOff()') Stop
+          button.btn.btn-warning(ng-click='takePhoto()') Snap
+    .row
+      .col-xs-4
+        #camera
