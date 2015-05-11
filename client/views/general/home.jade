@@ -1,1 +1,17 @@
-h3 HOME
+h3 BLUEIT
+
+.row
+  .col-xs-12
+    .row.listrows(ng-repeat='post in posts | orderBy:"-votes"')
+      div.rowdivs
+        span {{$index + 1}}
+      div.rowdivs
+        a.votebutton(ng-click='vote(post._id, "up")'): i.fa.fa-arrow-up
+        br
+        span {{post.votes}}
+        br
+        a.votebutton(ng-click='vote(post._id, "down")'): i.fa.fa-arrow-down
+      div.rowdivs
+        img.rowimg(ng-src='{{post.url}}' ng-show='post.isImage')
+      div.rowdivs
+        a.listtitle(ui-sref='posts.show({postId: post._id})') {{post.title}}

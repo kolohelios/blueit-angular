@@ -8,6 +8,14 @@ angular.module('blueit')
   Post.create = function(post){
     return $http.post(nodeUrl + '/posts', post);
   };
- 
+
+  Post.retrieve = function(){
+    return $http.get(nodeUrl + '/posts');
+  };
+
+  Post.vote = function(postId, direction){
+    return $http.put(nodeUrl + '/posts/' + postId + '/' + direction);
+  };
+
   return Post;
 });
