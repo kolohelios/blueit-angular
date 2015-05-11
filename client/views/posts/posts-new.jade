@@ -1,0 +1,12 @@
+h3
+  
+  form(name='newPostForm')
+  .row
+    .col-xs-6
+      .form-group
+        label(for='title') Title
+        input.form-control(type='text' name='title' ng-model='post.title')
+      .form-group
+        label(for='url') URL
+        input.form-control(type='url' name='url' ng-model='post.url')
+      button.btn.btn-success.btn-lg(ng-click='saveProfile(profile)') Save Profile
