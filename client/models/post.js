@@ -5,9 +5,9 @@ angular.module('blueit')
 
   function Post(){}
 
-  Post.add = function(post){
-    $http.post(nodeUrl + '/posts', post);
+  Post.create = function(post){
+    return $http.post(nodeUrl + '/posts', post);
   };
-
+ 
   return Post;
 });
