@@ -1,11 +1,10 @@
-h3 BLUEIT
-
 .row
   .col-xs-12
+    p(ng-hide='activeUser') Log in to vote.
     .row.listrows(ng-repeat='post in posts | orderBy:"-votes"')
       div.rowdivs
         span {{$index + 1}}
-      div.rowdivs
+      div.rowdivs(ng-show='activeUser')
         a.votebutton(ng-click='vote(post._id, "up")'): i.fa.fa-arrow-up
         br
         span {{post.votes}}
@@ -14,8 +13,7 @@ h3 BLUEIT
       div.rowdivs
         img.rowimg(ng-src='{{post.url}}' ng-show='post.isImage')
       div.rowdivs
-        a.listtitle(ui-sref='posts.show({postId: post._id})') {{post.title}}
+        h4: a.listtitle(ui-sref='posts.show({postId: post._id})') {{post.title}}
         p Submitted by {{post.handle}}&nbsp;
           span(am-time-ago='post.createdAt')
-        br(ng-show='post.isImage')
-        p.comments Comments: {{post.comments.length}}
+        p.comments: a(ui-sref='posts.show({postId: post._id})') Comments: {{post.comments.length}}

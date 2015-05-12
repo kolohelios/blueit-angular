@@ -7,7 +7,18 @@ angular.module('blueit')
 
   Post.retrieve(postId)
   .then(function(response){
-    $scope.post = response.data;
+    $scope.post = response.data
+    User.retrieve()
+    .then(function(result){
+      $scope.users = result.data;
+      $scope.post.comments.forEach(function(comment){
+        for(var i = 0; i < $scope.users.length; i++){
+          if(comment.userId === $scope.users[i]._id){
+            comment.handle = $scope.users[i].handle;
+          }
+        }
+      });
+    });
   });
 
   $scope.addComment = function(postId, comment){

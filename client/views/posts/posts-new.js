@@ -6,11 +6,13 @@ angular.module('blueit')
   $scope.createPost = function(post){
     var imageExts = ['.jpg', '.png', '.jpeg', '.gif'];
     post.isImage = false;
-    imageExts.forEach(function(ext){
-      if(post.url.indexOf(ext) > -1){
-        post.isImage = true;
-      }
-    });
+    if(imageExts){
+      imageExts.forEach(function(ext){
+        if(post.url.indexOf(ext) > -1){
+          post.isImage = true;
+        }
+      });
+    }
     Post.create(post)
     .then(function(){
       $state.go('home');

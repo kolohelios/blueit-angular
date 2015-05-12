@@ -9,4 +9,7 @@ h3
       .form-group
         label(for='url') URL
         input.form-control(type='url' name='url' ng-model='post.url')
+      .form-group
+        label(for='url') Post Body
+        input.form-control(type='url' name='url' ng-model='post.body')
       button.btn.btn-success.btn-lg(ng-click='createPost(post)') Add Post
