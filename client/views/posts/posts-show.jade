@@ -2,19 +2,10 @@ h3 SHOW POST
 .row
   .col-xs-6
     h4: a(href='{{post.url}}') Post title: {{post.title}}
-    img.showimage(ng-src='{{post.url}}' ng-show='post.isImage')
+    p Submitted by {{post.handle}}&nbsp;
+      span(am-time-ago='post.createdAt')
+    img.showimage.img-responsive(ng-src='{{post.url}}' ng-show='post.isImage')
     hr
-    .row(ng-repeat='comment in post.comments | orderBy: "-votes"') 
-      .rowdivs
-        a(ng-click='vote(post._id, comment._id, "up")'): i.fa.fa-arrow-up
-        br
-        span {{comment.votes}}
-        br
-        a(ng-click='vote(post._id, comment._id, "down")'): i.fa.fa-arrow-down
-      .rowdivs
-        p {{comment.body}}
-        span by {{comment.userId}}
-
   .col-xs-6
     form(name='commentForm')
       .form-group
@@ -22,3 +13,14 @@ h3 SHOW POST
         input.form-control(type='text' name='body' ng-model='comment.body')
       .form-group
         button.form-control(ng-click='addComment(post._id, comment)') Add Comment
+.row(ng-repeat='comment in post.comments | orderBy: "-votes"') 
+  .col-xs-6
+    .rowdivs
+      a(ng-click='vote(post._id, comment._id, "up")'): i.fa.fa-arrow-up
+      br
+      span {{comment.votes}}
+      br
+      a(ng-click='vote(post._id, comment._id, "down")'): i.fa.fa-arrow-down
+    .rowdivs
+      p {{comment.body}}
+      span by {{comment.userId}}

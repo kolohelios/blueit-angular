@@ -16,6 +16,8 @@
     "bootstrap": "~3.3.4",
     "angular-ui-router": "~0.2.14",
     "sweetalert": "~0.5.0",
-    "webcamjs": "*"
+    "webcamjs": "*",
+    "moment": "~2.10.2",
+    "angular-moment": "~0.10.1"
   }
 }

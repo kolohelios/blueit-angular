@@ -24,6 +24,7 @@ angular.module('blueit')
   };
 
   Post.addComment = function(postId, comment){
+    console.log(comment);
     return $http.put(nodeUrl + '/posts/' + postId + '/comment', comment);
   };
 

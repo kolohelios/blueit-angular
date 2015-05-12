@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('blueit')
-.controller('PostsShowCtrl', function($scope, Post, $state, $window){
+.controller('PostsShowCtrl', function($scope, Post, $state, $window, User){
 
   var postId = $state.params.postId;
 
@@ -13,7 +13,9 @@ angular.module('blueit')
   $scope.addComment = function(postId, comment){
     Post.addComment(postId, comment)
     .then(function(response){
-      $scope.post.comments.push(response.data);
+      var newComment = response.data;
+      newComment.votes = 1;
+      $scope.post.comments.push(newComment);
     });
   };
 

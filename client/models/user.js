@@ -22,6 +22,10 @@ angular.module('blueit')
     return $http.get(nodeUrl + '/profiles');
   };
 
+  User.retrieve = function(){
+    return $http.get(nodeUrl + '/users');
+  };
+
   User.updateProfile = function(profile){
     var o = angular.copy(profile);
     delete o._id;
